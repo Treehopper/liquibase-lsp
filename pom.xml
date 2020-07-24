@@ -1,0 +1,299 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.hohenegger</groupId>
+    <artifactId>liquibase-lsp</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven-compiler.version>3.8.1</maven-compiler.version>
+        <maven-surefire.version>3.0.0-M4</maven-surefire.version>
+        <mockito.version>3.3.3</mockito.version>
+
+        <liquibase.version>4.0.0</liquibase.version>
+        <snakeyaml.version>1.26</snakeyaml.version>
+        
+        <main.basedir>${project.basedir}</main.basedir>
+    </properties>
+
+    <licenses>
+      <license>
+        <name>Eclipse Public License, Version 2.0</name>
+        <url>https://www.eclipse.org/legal/epl-2.0/</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+
+    <repositories>
+        <repository>
+            <id>eclipse</id>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <name>eclipse-releases</name>
+            <url>https://repo.eclipse.org/content/groups/releases/</url>
+        </repository>
+        <!-- JBabel -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.eclipse.lemminx</groupId>
+                <artifactId>org.eclipse.lemminx</artifactId>
+                <version>0.13.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.6.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-inline</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.16.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>${liquibase.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.200</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <modules>
+        <module>org.eclipse.lemminx.api</module>
+        <module>liquibase-lemminx-extension-core</module>
+        <module>liquibase-lemminx-extension</module>
+        <module>liquibase-lemminx-extension-test</module>
+        <module>liquibase-lemminx-eclipse</module>
+		<module>liquibase-editor-adapter</module>
+    </modules>
+
+    <profiles>
+        <profile>
+            <!-- FIXME: This won't work until this is fixed: https://github.com/liquibase/liquibase/issues/1051#issuecomment-648991371 -->
+            <id>jre14</id>
+            <activation>
+                <!-- Activation via *absence* of a system property to ensure mutual exclusivity 
+                    of this profile with jre8 -->
+                <property>
+                    <name>!for-target-jre8</name>
+                </property>
+            </activation>
+            <properties>
+                <maven-compiler-plugin.java-release>14</maven-compiler-plugin.java-release>
+                <maven-compiler-plugin.compilerArgs>--enable-preview</maven-compiler-plugin.compilerArgs>
+                <maven-compiler-plugin.excludes>do-not-exclude-anything-dummy-to-avoid-npe</maven-compiler-plugin.excludes>
+            </properties>
+        </profile>
+        <profile>
+            <id>jre8</id>
+            <activation>
+                <!-- Activation via *presence* of a system property to ensure mutual 
+                    exclusivity of this profile with jre14 -->
+                <property>
+                    <name>for-target-jre8</name>
+                </property>
+            </activation>
+            <properties>
+                <maven-compiler-plugin.java-release>8</maven-compiler-plugin.java-release>
+                <maven-compiler-plugin.compilerArgs></maven-compiler-plugin.compilerArgs>
+                <!-- TODO: find a better solution https://github.com/bsideup/jabel/issues/29 -->
+                <maven-compiler-plugin.excludes>**/module-info.java</maven-compiler-plugin.excludes>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler.version}</version>
+                    <configuration>
+                        <release>${maven-compiler-plugin.java-release}</release>
+                        <annotationProcessorPaths>
+                            <annotationProcessorPath>
+                                <!-- TODO: replace with bsideups when ready: https://github.com/bsideup/jabel/issues/11#issuecomment-648117516 -->
+                                <groupId>com.github.Treehopper</groupId>
+                                <artifactId>jabel</artifactId>
+                                <version>0.3.0-records</version>
+                            </annotationProcessorPath>
+                        </annotationProcessorPaths>
+
+                        <optimize>true</optimize>
+                        <useIncrementalCompilation>false</useIncrementalCompilation>
+                        <showDeprecation>true</showDeprecation>
+                        <showWarnings>true</showWarnings>
+
+                        <compilerArgs>${maven-compiler-plugin.compilerArgs}</compilerArgs>
+
+                        <excludes>
+                            <exclude>${maven-compiler-plugin.excludes}</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>4.0.0</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <phase>verify</phase>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <fork>false</fork>
+                        <failOnError>false</failOnError>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.1</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${maven-surefire.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>2.0.0</version>
+                    <executions>
+                        <execution>
+                            <id>download</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>download-licenses</goal>
+                            </goals>
+                            <configuration>
+                                <licensesOutputDirectory>${project.build.directory}/classes/licenses</licensesOutputDirectory>
+                                <licensesOutputFile>${project.build.directory}/classes/licenses.xml</licensesOutputFile>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>headers</id>
+                            <phase>process-sources</phase>
+                            <goals>
+                                <goal>check-file-header</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <roots>
+                            <root>src/main/java</root>
+                            <root>src/test/java</root>
+                        </roots>
+                        <includes>
+                            <include>**/*.java</include>
+                        </includes>
+                        <descriptionTemplate>${main.basedir}/epl_v2-template.java
+                        </descriptionTemplate>
+                        <licenseName>epl_v2</licenseName>
+                        <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+                        <failOnMissingHeader>true</failOnMissingHeader>
+                        <failOnNotUptodateHeader>true</failOnNotUptodateHeader>
+                        <organizationName>hohenegger.eu</organizationName>
+                        <copyrightOwners>Max Hohenegger &lt;eclipse@hohenegger.eu&gt;
+                        </copyrightOwners>
+                        <inceptionYear>2020</inceptionYear>
+                        <canUpdateLicense>false</canUpdateLicense>
+                        <sectionDelimiter></sectionDelimiter>
+                        <useJavaNoReformatCommentStartTag>false
+                        </useJavaNoReformatCommentStartTag>
+                        <excludedGroups>^(org\.eclipse\.)</excludedGroups>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

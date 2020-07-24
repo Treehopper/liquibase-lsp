@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>eu.hohenegger</groupId>
+        <artifactId>liquibase-lsp</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>org.eclipse.lemminx.api</artifactId>
+
+    <properties>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+                <groupId>org.eclipse.lemminx</groupId>
+                <artifactId>org.eclipse.lemminx</artifactId>
+                <scope>provided</scope> 
+            </dependency>
+    </dependencies>
+
+    <build>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>headers</id>
+                            <configuration>
+                                <skipUpdateLicense>true</skipUpdateLicense>
+                                <skipCheckLicense>true</skipCheckLicense>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
