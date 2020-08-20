@@ -30,7 +30,11 @@ See also [#6](/../../issues/6)
 
 This project is written with JDK 14, but compiled for JRE 8, using [Jabel](https://github.com/bsideup/jabel).
 
-## Getting Started
+### Architecture
+
+![](images/liquibase-lsp-architecture.png)
+
+### Getting Started
 
 ```Bash
 mvn clean package -Dfor-target-jre8
