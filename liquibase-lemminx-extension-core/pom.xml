@@ -123,6 +123,20 @@
             <artifactId>jabel</artifactId>
             <version>0.3.0-records</version>
         </dependency>
+
+        <!-- ArchUnit -->
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5-api</artifactId>
+            <version>0.14.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5</artifactId>
+            <version>0.14.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

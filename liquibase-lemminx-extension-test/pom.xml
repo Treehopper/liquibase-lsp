@@ -17,11 +17,11 @@
     </properties>
 
     <licenses>
-      <license>
-        <name>Eclipse Public License, Version 2.0</name>
-        <url>https://www.eclipse.org/legal/epl-2.0/</url>
-        <distribution>repo</distribution>
-      </license>
+        <license>
+            <name>Eclipse Public License, Version 2.0</name>
+            <url>https://www.eclipse.org/legal/epl-2.0/</url>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
 
     <dependencies>
