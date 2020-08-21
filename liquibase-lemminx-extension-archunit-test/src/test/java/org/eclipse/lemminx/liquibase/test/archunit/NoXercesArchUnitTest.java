@@ -1,4 +1,4 @@
-package org.eclipse.lemminx.api;
+package org.eclipse.lemminx.liquibase.test.archunit;
 
 import static com.tngtech.archunit.base.DescribedPredicate.anyElementThat;
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.resideInAPackage;

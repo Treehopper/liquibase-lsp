@@ -3,7 +3,6 @@ module liquibase.editor.adapter {
     exports liquibase.wrapper;
     exports liquibase.wrapper.exception;
     
-    requires org.eclipse.lemminx;
     requires org.eclipse.lsp4j;
     
     requires lemminx.api;

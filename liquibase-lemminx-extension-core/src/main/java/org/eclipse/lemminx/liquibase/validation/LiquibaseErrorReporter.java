@@ -42,14 +42,16 @@ public class LiquibaseErrorReporter implements ILiquibaseErrorReporter {
         this.reporter = reporter;
     }
 
-    public void report(ChangeSet changeSet, String message, DiagnosticSeverity severity) {
+    @Override
+	public void report(ChangeSet changeSet, String message, DiagnosticSeverity severity) {
         var roots = document.getRoots();
         for (var root : roots) {
             report(changeSet.getId(), message, root, severity);
         }
     }
 
-    public void report(String changeSetId, String message, DiagnosticSeverity severity) {
+    @Override
+	public void report(String changeSetId, String message, DiagnosticSeverity severity) {
         var roots = document.getRoots();
         for (var root : roots) {
             report(changeSetId, message, root, severity);
@@ -59,18 +61,20 @@ public class LiquibaseErrorReporter implements ILiquibaseErrorReporter {
     private void report(String changeSetId, String message, DOMNode root, DiagnosticSeverity severity) {
         var children = root.getChildrenWithAttributeValue(CHANGE_SET_ID_ATTRIBUTE, changeSetId);
         for (var node : children) {
-            report(message, severity, node);
+            report(message, severity, node.getStart(), node.getEnd());
         }
     }
     
-    public void reportOnDocument(String message, DiagnosticSeverity severity) {
+    @Override
+	public void reportOnDocument(String message, DiagnosticSeverity severity) {
         var adjustedRange = document.getTrimmedRange(document.getStart(), document.getEnd());
         LOGGER.log(Level.INFO, message + " at " + adjustedRange);
         reporter.addDiagnostic(adjustedRange, message, severity, "MigrationFailedException");
     }
 
-    public void report(String message, DiagnosticSeverity severity, DOMNode node) {
-        var adjustedRange = document.getTrimmedRange(node.getStart(), node.getEnd());
+    @Override
+	public void report(String message, DiagnosticSeverity severity, int start, int end) {
+        var adjustedRange = document.getTrimmedRange(start, end);
         LOGGER.log(Level.INFO, message + " at " + adjustedRange);
         reporter.addDiagnostic(adjustedRange, message, severity, "MigrationFailedException");
     }

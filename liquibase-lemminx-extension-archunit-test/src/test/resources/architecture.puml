@@ -1,0 +1,52 @@
+@startuml
+
+skinparam componentStyle uml2
+skinparam handwritten true
+
+skinparam component {
+	BorderColor #grey
+	ArrowColor DeepSkyBlue
+	ActorBorderColor DeepSkyBlue
+	LifeLineBorderColor blue
+	LifeLineBackgroundColor #A9DCDF
+	
+	ParticipantBorderColor DeepSkyBlue
+	ParticipantBackgroundColor DodgerBlue
+	ParticipantFontName Impact
+	ParticipantFontSize 17
+	ParticipantFontColor #A9DCDF
+	
+	ActorBackgroundColor aqua
+	ActorFontColor DeepSkyBlue
+	ActorFontSize 17
+	ActorFontName Aapex
+}
+
+frame "liquibase-lsp" {
+	[liquibase-lemminx-eclipse] <<eclipse.plugin>> as eclipse.plugin
+	[liquibase-lemminx-extension] <<extension>> as extension
+	[liquibase-lemminx-extension-core] <<org.eclipse.lemminx.liquibase..>> as extension.core
+	[liquibase-editor-adapter] <<liquibase.wrapper..>> as liquibase.wrapper
+	note top: Convenience API for Liquibase
+	[org.eclipse.lemminx.api] <<eu.hohenegger.lemminx..>> as lemminx.api
+	note top: API Wrapper without Xerces Types
+	
+}
+[VSCode, IntelliJ, Theia, Atom, ...] <<future.editor.plugin>> as future.editor.plugin #White
+
+[liquibase-core] <<liquibase>> as liquibase.core
+[org.eclipse.lemminx] <<org.eclipse.lemminx.dom..>> as lemminx
+
+eclipse.plugin ..> extension : wraps jar; adds extension point
+lemminx.api --> lemminx
+extension ..> extension.core : shades all dependencies
+extension.core -left-> lemminx.api
+extension.core --> lemminx
+extension.core -right-> liquibase.wrapper
+extension.core --> liquibase.core
+liquibase.wrapper --> liquibase.core
+
+future.editor.plugin ..> extension
+
+@enduml
+
