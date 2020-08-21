@@ -110,6 +110,7 @@
         <module>liquibase-lemminx-extension-core</module>
         <module>liquibase-lemminx-extension</module>
         <module>liquibase-lemminx-extension-test</module>
+		<module>liquibase-lemminx-extension-archunit-test</module>
         <module>liquibase-lemminx-eclipse</module>
 		<module>liquibase-editor-adapter</module>
     </modules>
