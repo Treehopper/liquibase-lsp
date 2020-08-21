@@ -24,5 +24,4 @@ module liquibase.lsp.test.client {
 
     opens org.eclipse.lemminx.liquibase.test;
     opens org.eclipse.lemminx.liquibase.test.jupiter;
-    opens org.eclipse.lemminx.liquibase.test.archunit;
 }
