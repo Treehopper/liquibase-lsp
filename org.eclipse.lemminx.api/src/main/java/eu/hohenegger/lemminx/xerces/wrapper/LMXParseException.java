@@ -2,8 +2,6 @@ package eu.hohenegger.lemminx.xerces.wrapper;
 
 import org.apache.xerces.xni.parser.XMLParseException;
 
-import eu.hohenegger.lemminx.adapter.impl.XMLLocatorWrapper;
-
 public class LMXParseException extends LMXXNIException {
 
     private static final long serialVersionUID = -2393959177927508111L;

@@ -4,7 +4,6 @@ import java.util.Locale;
 
 import org.apache.xerces.impl.Constants;
 import org.apache.xerces.impl.XMLErrorReporter;
-import org.apache.xerces.util.MessageFormatter;
 
 public class LMXErrorReporter {
     private XMLErrorReporter xmlErrorReporter;
@@ -13,8 +12,8 @@ public class LMXErrorReporter {
         xmlErrorReporter = new XMLErrorReporter();
     }
 
-    public void putMessageFormatter(String domain, MessageFormatter messageFormatter) {
-        xmlErrorReporter.putMessageFormatter(domain, messageFormatter);
+    public void putMessageFormatter(String domain, MessageFormatterWrapper messageFormatter) {
+        xmlErrorReporter.putMessageFormatter(domain, messageFormatter.getMessageFormatter());
     }
 
     public MessageFormatterWrapper getMessageFormatter(String domain) {
