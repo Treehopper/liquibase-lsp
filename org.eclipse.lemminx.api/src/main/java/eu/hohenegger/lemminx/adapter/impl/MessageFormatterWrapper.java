@@ -8,9 +8,13 @@ public class MessageFormatterWrapper {
 
     private MessageFormatter messageFormatter;
 
-    public MessageFormatterWrapper(MessageFormatter messageFormatter) {
+	public MessageFormatterWrapper(MessageFormatter messageFormatter) {
         this.messageFormatter = messageFormatter;
     }
+	
+	MessageFormatter getMessageFormatter() {
+		return messageFormatter;
+	}
 
     public String formatMessage(Locale locale, String key, Object[] arguments) {
         return messageFormatter.formatMessage(locale, key, arguments);

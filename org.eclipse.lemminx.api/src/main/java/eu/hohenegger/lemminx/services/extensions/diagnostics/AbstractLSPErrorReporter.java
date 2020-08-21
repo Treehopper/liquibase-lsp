@@ -44,7 +44,7 @@ public abstract class AbstractLSPErrorReporter extends LMXErrorReporter {
         this.source = source;
         this.xmlDocument = xmlDocument;
         this.diagnostics = diagnostics;
-        MessageFormatter xmft = new XMLMessageFormatter();
+        MessageFormatterWrapper xmft = new MessageFormatterWrapper(new XMLMessageFormatter());
         super.putMessageFormatter(XMLMessageFormatter.XML_DOMAIN, xmft);
         super.putMessageFormatter(XMLMessageFormatter.XMLNS_DOMAIN, xmft);
         //FIXME: somehow LSPMessageFormatter breaks this initialization

@@ -1,8 +1,6 @@
-package eu.hohenegger.lemminx.adapter.impl;
+package eu.hohenegger.lemminx.xerces.wrapper;
 
 import org.apache.xerces.xni.XMLLocator;
-
-import eu.hohenegger.lemminx.xerces.wrapper.LMXLocator;
 
 public class XMLLocatorWrapper implements LMXLocator {
     
@@ -22,7 +20,7 @@ public class XMLLocatorWrapper implements LMXLocator {
         return getLocator().getColumnNumber();
     }
 
-    public XMLLocator getLocator() {
+    XMLLocator getLocator() {
         return locator;
     }
     
