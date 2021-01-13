@@ -1,0 +1,13 @@
+language: java
+jdk:
+ - openjdk14
+
+install:
+- mvn clean package -Dfor-target-jre8
+
+notifications:
+ email:
+   recipients:
+    - travis-ci.liquibase-lsp@hohenegger.eu
+   on_success: change
+   on_failure: always
