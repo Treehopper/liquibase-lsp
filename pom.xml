@@ -13,7 +13,7 @@
         <maven-surefire.version>3.0.0-M5</maven-surefire.version>
         <mockito.version>3.7.0</mockito.version>
 
-        <liquibase.version>4.0.0</liquibase.version>
+        <liquibase.version>4.3.0</liquibase.version>
         <snakeyaml.version>1.27</snakeyaml.version>
         
         <main.basedir>${project.basedir}</main.basedir>
