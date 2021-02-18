@@ -33,6 +33,7 @@ import org.eclipse.lsp4j.TextDocumentItem;
 import org.eclipse.lsp4j.VersionedTextDocumentIdentifier;
 import org.eclipse.lsp4j.services.TextDocumentService;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -59,6 +60,7 @@ public class LiquibaseDiagnosticParticipantTest {
           </changeSet>
         </databaseChangeLog>
             """)
+    @Tag("slow")
     public void testCompleteId(TextDocumentItem textDocumentItem, TextDocumentService textDocumentService) throws Throwable {
         var idPosition = new Position(6, 37);
         var documentIdentifier = new TextDocumentIdentifier(textDocumentItem.getUri());
@@ -94,6 +96,7 @@ public class LiquibaseDiagnosticParticipantTest {
               </changeSet>
             </databaseChangeLog>
                 """)
+    @Tag("slow")
     public void testBadTableColumnType(TextDocumentItem textDocumentItem, ClientServerConnection connection) {
         assertTrue(connection.doesEventuallyContainMessage("Failed SQL: (50004) CREATE TABLE PUBLIC.mytable (aname COLUMN_TYPE)"));
 
@@ -123,6 +126,7 @@ public class LiquibaseDiagnosticParticipantTest {
               </changeSet>
             </databaseChangeLog>
                 """)
+    @Tag("slow")
     public void testPredecessor(ClientServerConnection connection) {
         assertTrue(connection.doesEventuallyContainMessage("Failed SQL: (42121) ALTER TABLE PUBLIC.foobar ADD efg INT"));
     }
@@ -159,6 +163,7 @@ public class LiquibaseDiagnosticParticipantTest {
           </changeSet>
         </databaseChangeLog>
                 """)
+    @Tag("slow")
     public void testDuplicateChangeset(ClientServerConnection connection) {
         assertTrue(connection.doesEventuallyContainMessage("Duplicate changeSet"));
     }
@@ -183,6 +188,7 @@ public class LiquibaseDiagnosticParticipantTest {
             </changeSet>
         </databaseChangeLog>
                 """)
+    @Tag("slow")
     public void testColumnNameIsRequired(ClientServerConnection connection) {
         assertTrue(connection.doesEventuallyContainMessage("columnName is required"));
     }
