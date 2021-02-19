@@ -2,8 +2,8 @@ language: java
 jdk:
  - openjdk15
 
-install:
-- mvn clean package -Dfor-target-jre8
+script:
+- mvn clean package -Dfor-target-jre8 -Djupiter-exclude-tags=slow
 
 notifications:
  email:
