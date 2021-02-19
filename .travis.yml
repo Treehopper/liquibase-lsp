@@ -3,7 +3,7 @@ jdk:
  - openjdk14
 
 install:
-- mvn clean package -Dfor-target-jre8 -DexcludedGroups="slow"
+- mvn clean package -Dfor-target-jre8
 
 notifications:
  email:

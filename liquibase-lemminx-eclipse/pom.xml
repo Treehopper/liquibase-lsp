@@ -67,7 +67,7 @@
 				<executions>
 					<execution>
 						<id>copy</id>
-						<phase>generate-resources</phase>
+						<phase>pre-package</phase>
 						<goals>
 							<goal>copy</goal>
 						</goals>
@@ -90,7 +90,7 @@
 
 					<execution>
 						<id>unpack</id>
-						<phase>generate-resources</phase>
+						<phase>pre-package</phase>
 						<goals>
 							<goal>unpack</goal>
 						</goals>
