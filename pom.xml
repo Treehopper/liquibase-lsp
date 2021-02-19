@@ -128,7 +128,6 @@
             </activation>
             <properties>
                 <maven-compiler-plugin.java-release>14</maven-compiler-plugin.java-release>
-                <maven-compiler-plugin.compilerArgs>--enable-preview</maven-compiler-plugin.compilerArgs>
                 <maven-compiler-plugin.excludes>do-not-exclude-anything-dummy-to-avoid-npe</maven-compiler-plugin.excludes>
             </properties>
         </profile>
@@ -234,7 +233,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire.version}</version>
 	                <configuration>
-	                    <argLine>--enable-preview --add-exports org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED --add-exports org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</argLine>
+	                    <argLine>--add-exports org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED --add-exports org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</argLine>
 	                </configuration>
                 </plugin>
                 <plugin>
