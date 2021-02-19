@@ -1,6 +1,6 @@
 language: java
 jdk:
- - openjdk14
+ - openjdk15
 
 install:
 - mvn clean package -Dfor-target-jre8

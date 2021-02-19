@@ -118,7 +118,7 @@
     <profiles>
         <profile>
             <!-- FIXME: This won't work until this is fixed: https://github.com/liquibase/liquibase/issues/1051#issuecomment-648991371 -->
-            <id>jre14</id>
+            <id>jre15</id>
             <activation>
                 <!-- Activation via *absence* of a system property to ensure mutual exclusivity 
                     of this profile with jre8 -->
@@ -127,7 +127,8 @@
                 </property>
             </activation>
             <properties>
-                <maven-compiler-plugin.java-release>14</maven-compiler-plugin.java-release>
+                <maven-compiler-plugin.java-release>15</maven-compiler-plugin.java-release>
+                <maven-compiler-plugin.compilerArgs>--enable-preview</maven-compiler-plugin.compilerArgs>
                 <maven-compiler-plugin.excludes>do-not-exclude-anything-dummy-to-avoid-npe</maven-compiler-plugin.excludes>
             </properties>
         </profile>
@@ -135,7 +136,7 @@
             <id>jre8</id>
             <activation>
                 <!-- Activation via *presence* of a system property to ensure mutual 
-                    exclusivity of this profile with jre14 -->
+                    exclusivity of this profile with jre15 -->
                 <property>
                     <name>for-target-jre8</name>
                 </property>
@@ -233,7 +234,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire.version}</version>
 	                <configuration>
-	                    <argLine>--add-exports org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED --add-exports org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</argLine>
+	                    <argLine>--enable-preview --add-exports org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED --add-exports org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</argLine>
 	                </configuration>
                 </plugin>
                 <plugin>

@@ -28,7 +28,7 @@ See also [#6](/../../issues/6)
 
 ## Developer
 
-This project is written with JDK 14, but compiled for JRE 8, using [Jabel](https://github.com/bsideup/jabel).
+This project is written with JDK 15, but compiled for JRE 8, using [Jabel](https://github.com/bsideup/jabel).
 
 ### Architecture
 
