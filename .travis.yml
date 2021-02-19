@@ -3,7 +3,7 @@ jdk:
  - openjdk15
 
 script:
-- mvn clean package -Dfor-target-jre8 -Djupiter-exclude-tags=slow
+- mvn clean package -Dfor-target-jre8 -DexcludedGroups=slow
 
 notifications:
  email:
