@@ -22,11 +22,12 @@ import static org.eclipse.lemminx.liquibase.IsLiquibase.isLiquibase;
 
 import java.util.List;
 
+import org.eclipse.lemminx.dom.DOMDocument;
+import org.eclipse.lemminx.extensions.contentmodel.settings.XMLValidationSettings;
 import org.eclipse.lemminx.liquibase.validation.Validator;
+import org.eclipse.lemminx.services.extensions.diagnostics.IDiagnosticsParticipant;
 import org.eclipse.lsp4j.Diagnostic;
 import org.eclipse.lsp4j.jsonrpc.CancelChecker;
-import org.eclipse.lemminx.dom.DOMDocument;
-import org.eclipse.lemminx.services.extensions.diagnostics.IDiagnosticsParticipant;
 
 
 public class DiagnosticsParticipant implements IDiagnosticsParticipant {
@@ -38,14 +39,14 @@ public class DiagnosticsParticipant implements IDiagnosticsParticipant {
     }
 
     @Override
-    public void doDiagnostics(DOMDocument document, List<Diagnostic> diagnostics, CancelChecker monitor) {
+    public void doDiagnostics(DOMDocument document, List<Diagnostic> diagnostics,
+            XMLValidationSettings validationSettings, CancelChecker monitor) {
         if (!isLiquibase(document)) {
             return;
         }
         
         Validator.doDiagnostics(document, diagnostics, rootUri, monitor);
     }
-
 
 }
 
