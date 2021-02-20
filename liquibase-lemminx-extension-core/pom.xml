@@ -119,9 +119,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.Treehopper</groupId>
-            <artifactId>jabel</artifactId>
-            <version>0.3.0-records</version>
+            <groupId>com.github.bsideup.jabel</groupId>
+            <artifactId>jabel-javac-plugin</artifactId>
+            <version>0.3.0</version>
         </dependency>
     </dependencies>
 

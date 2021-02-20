@@ -39,7 +39,6 @@ module liquibase.lsp {
     requires java.naming;
     
     requires java.logging;
-    requires jabel;
     
     provides IXMLExtension with Plugin;
 }

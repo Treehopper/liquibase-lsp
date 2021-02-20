@@ -15,5 +15,4 @@ module liquibase.editor.adapter {
     requires java.naming;
     
     requires java.logging;
-    requires jabel;
 }

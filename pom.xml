@@ -36,11 +36,6 @@
             <name>eclipse-releases</name>
             <url>https://repo.eclipse.org/content/groups/releases/</url>
         </repository>
-        <!-- JBabel -->
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
     </repositories>
 
     <dependencyManagement>
@@ -181,9 +176,9 @@
                         <annotationProcessorPaths>
                             <annotationProcessorPath>
                                 <!-- TODO: replace with bsideups when ready: https://github.com/bsideup/jabel/issues/11#issuecomment-648117516 -->
-                                <groupId>com.github.Treehopper</groupId>
-                                <artifactId>jabel</artifactId>
-                                <version>0.3.0-records</version>
+                                <groupId>com.github.bsideup.jabel</groupId>
+                                <artifactId>jabel-javac-plugin</artifactId>
+                                <version>0.3.0</version>
                             </annotationProcessorPath>
                         </annotationProcessorPaths>
 
