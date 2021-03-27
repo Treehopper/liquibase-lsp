@@ -37,6 +37,7 @@ module liquibase.lsp {
     requires com.h2database;
     requires java.sql;
     requires java.naming;
+    requires com.google.auto.service;
     
     requires java.logging;
     

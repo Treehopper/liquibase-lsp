@@ -29,7 +29,9 @@ import org.eclipse.lemminx.services.extensions.XMLExtensionsRegistry;
 import org.eclipse.lemminx.services.extensions.diagnostics.IDiagnosticsParticipant;
 import org.eclipse.lemminx.services.extensions.save.ISaveContext;
 import org.h2.tools.Server;
+import com.google.auto.service.AutoService;
 
+@AutoService(IXMLExtension.class)
 public class Plugin implements IXMLExtension {
 
     private static final Logger LOGGER = Logger.getLogger(Plugin.class.getName());
