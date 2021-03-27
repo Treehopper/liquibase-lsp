@@ -1,2 +1,10 @@
+image:
+  file: Dockerfile
+
 tasks:
-  - init: mvn install -DskipTests=false
+  - init: mvn clean package -Dfor-target-jre8 -DexcludedGroups=slow -Dlicense.skipDownloadLicenses=true
+
+vscode:
+  extensions:
+    - vscjava.vscode-maven@0.21.2:tFEkt2FqLujaNTLU5AmRiQ==
+    - alphabotsec.vscode-eclipse-keybindings@0.12.0:FCwchQz8KuaeuhwHtGmfUw==
