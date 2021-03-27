@@ -24,6 +24,8 @@ import java.util.logging.Logger;
 import org.eclipse.lsp4j.CompletionItem;
 import org.eclipse.lsp4j.CompletionItemKind;
 import org.eclipse.lsp4j.TextEdit;
+import org.eclipse.lsp4j.InsertReplaceEdit;
+import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.eclipse.lemminx.commons.BadLocationException;
 import org.eclipse.lemminx.dom.DOMDocument;
 import org.eclipse.lemminx.services.extensions.ICompletionRequest;
@@ -59,7 +61,7 @@ public class LiquibaseModel {
         item.setLabel("Generate random ID");
         item.setFilterText(insertText);
         item.setKind(CompletionItemKind.Enum);
-        item.setTextEdit(new TextEdit(editRange, insertText));
+        item.setTextEdit(Either.<TextEdit,InsertReplaceEdit>forLeft(new TextEdit(editRange, insertText)));
         response.addCompletionItem(item);
     }
 
