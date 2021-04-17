@@ -25,10 +25,12 @@ import org.eclipse.lemminx.services.extensions.CompletionParticipantAdapter;
 import org.eclipse.lemminx.services.extensions.ICompletionRequest;
 import org.eclipse.lemminx.services.extensions.ICompletionResponse;
 
+import org.eclipse.lsp4j.jsonrpc.CancelChecker;
+
 public class CompletionParticipant extends CompletionParticipantAdapter {
 
     @Override
-    public void onAttributeValue(String valuePrefix, ICompletionRequest request, ICompletionResponse response)
+    public void onAttributeValue(String valuePrefix, ICompletionRequest request, ICompletionResponse response, CancelChecker cancelChecker)
             throws Exception {
         if (!isLiquibase(request.getXMLDocument())) {
             return;
