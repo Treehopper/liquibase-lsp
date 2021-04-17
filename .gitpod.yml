@@ -2,7 +2,7 @@ image:
   file: Dockerfile
 
 tasks:
-  - init: mvn clean package -Dfor-target-jre8 -DexcludedGroups=slow -Dlicense.skipDownloadLicenses=true
+  - init: mvnd clean package -Dfor-target-jre8 -DexcludedGroups=slow -Dlicense.skipDownloadLicenses=true
 
 vscode:
   extensions:
