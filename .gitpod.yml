@@ -7,4 +7,6 @@ tasks:
 vscode:
   extensions:
     - vscjava.vscode-maven@0.21.2:tFEkt2FqLujaNTLU5AmRiQ==
-    - alphabotsec.vscode-eclipse-keybindings@0.12.0:FCwchQz8KuaeuhwHtGmfUw==
+    - vscjava.vscode-java-test@0.28.1:56ae6da859db06ff02cc83b4dc77f5f4
+    - vscode.java@1.55.2:f26594f2a26ab6145cf2e0b1442af1cc
+    - alphabotsec.vscode-eclipse-keybindings@0.13.0:4f18346e0f3a94256aafe567d0fb6123
