@@ -2,9 +2,13 @@ image:
   file: Dockerfile
 
 tasks:
-  - init: mvn clean package -Dfor-target-jre8 -DexcludedGroups=slow -Dlicense.skipDownloadLicenses=true
+  - init: mvnd clean package -Dfor-target-jre8 -DexcludedGroups=slow -Dlicense.skipDownloadLicenses=true
 
 vscode:
   extensions:
     - vscjava.vscode-maven@0.21.2:tFEkt2FqLujaNTLU5AmRiQ==
-    - alphabotsec.vscode-eclipse-keybindings@0.12.0:FCwchQz8KuaeuhwHtGmfUw==
+    - vscjava.vscode-java-test@0.28.1:56ae6da859db06ff02cc83b4dc77f5f4
+    - vscode.java@1.55.2:f26594f2a26ab6145cf2e0b1442af1cc
+    - alphabotsec.vscode-eclipse-keybindings@0.13.0:4f18346e0f3a94256aafe567d0fb6123
+    - vscjava.vscode-java-dependency@0.18.2:e520584e80dadd6fa663767015f45ad5
+    - redhat.java@0.76.0
