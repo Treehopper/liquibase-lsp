@@ -1,0 +1,19 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: org.eclipse.lemminx:org.eclipse.lemminx
+    versions:
+    - 0.14.1
+    - 0.15.0
+  - dependency-name: org.reficio:p2-maven-plugin
+    versions:
+    - 1.5.0
+  - dependency-name: org.liquibase:liquibase-core
+    versions:
+    - 4.2.2
+    - 4.3.0
