@@ -113,7 +113,7 @@
     <profiles>
         <profile>
             <!-- FIXME: This won't work until this is fixed: https://github.com/liquibase/liquibase/issues/1051#issuecomment-648991371 -->
-            <id>jre15</id>
+            <id>jre16</id>
             <activation>
                 <!-- Activation via *absence* of a system property to ensure mutual exclusivity 
                     of this profile with jre8 -->
@@ -122,7 +122,7 @@
                 </property>
             </activation>
             <properties>
-                <maven-compiler-plugin.java-release>15</maven-compiler-plugin.java-release>
+                <maven-compiler-plugin.java-release>16</maven-compiler-plugin.java-release>
                 <maven-compiler-plugin.compilerArgs>--enable-preview</maven-compiler-plugin.compilerArgs>
                 <maven-compiler-plugin.excludes>do-not-exclude-anything-dummy-to-avoid-npe</maven-compiler-plugin.excludes>
             </properties>
@@ -131,7 +131,7 @@
             <id>jre8</id>
             <activation>
                 <!-- Activation via *presence* of a system property to ensure mutual 
-                    exclusivity of this profile with jre15 -->
+                    exclusivity of this profile with jre16 -->
                 <property>
                     <name>for-target-jre8</name>
                 </property>
@@ -178,7 +178,7 @@
                                 <!-- TODO: replace with bsideups when ready: https://github.com/bsideup/jabel/issues/11#issuecomment-648117516 -->
                                 <groupId>com.github.bsideup.jabel</groupId>
                                 <artifactId>jabel-javac-plugin</artifactId>
-                                <version>0.3.0</version>
+                                <version>0.4.2</version>
                             </annotationProcessorPath>
                         </annotationProcessorPaths>
 
