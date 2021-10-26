@@ -1,5 +1,9 @@
 {
     "java.test.config": {
-        "vmArgs": ["--enable-preview", "--add-exports", "org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED", "--add-exports", "org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED"]
+        "vmArgs": [
+            "--enable-preview",
+            "--add-exports", "org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED",
+            "--add-exports", "org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED"
+        ]
     }
 }
