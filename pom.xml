@@ -11,7 +11,7 @@
     <properties>
         <maven-compiler.version>3.8.1</maven-compiler.version>
         <maven-surefire.version>3.0.0-M5</maven-surefire.version>
-        <mockito.version>4.0.0</mockito.version>
+        <mockito.version>4.1.0</mockito.version>
 
         <liquibase.version>4.5.0</liquibase.version>
         <snakeyaml.version>1.29</snakeyaml.version>
