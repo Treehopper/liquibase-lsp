@@ -138,7 +138,7 @@
             </activation>
             <properties>
                 <maven-compiler-plugin.java-release>8</maven-compiler-plugin.java-release>
-                <maven-compiler-plugin.compilerArgs></maven-compiler-plugin.compilerArgs>
+                <maven-compiler-plugin.compilerArgs/>
                 <!-- TODO: find a better solution https://github.com/bsideup/jabel/issues/29 -->
                 <maven-compiler-plugin.excludes>**/module-info.java</maven-compiler-plugin.excludes>
             </properties>
@@ -282,11 +282,11 @@
                         <failOnMissingHeader>true</failOnMissingHeader>
                         <failOnNotUptodateHeader>true</failOnNotUptodateHeader>
                         <organizationName>hohenegger.eu</organizationName>
-                        <copyrightOwners>Max Hohenegger &lt;eclipse@hohenegger.eu&gt;
+                        <copyrightOwners>Max Hohenegger &lt;eclipse@hohenegger.eu>
                         </copyrightOwners>
                         <inceptionYear>2020</inceptionYear>
                         <canUpdateLicense>false</canUpdateLicense>
-                        <sectionDelimiter></sectionDelimiter>
+                        <sectionDelimiter/>
                         <useJavaNoReformatCommentStartTag>false
                         </useJavaNoReformatCommentStartTag>
                         <excludedGroups>^(org\.eclipse\.)</excludedGroups>
