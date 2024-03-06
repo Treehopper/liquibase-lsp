@@ -94,7 +94,7 @@
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>2.1.214</version>
+                <version>2.2.220</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -138,7 +138,7 @@
             </activation>
             <properties>
                 <maven-compiler-plugin.java-release>8</maven-compiler-plugin.java-release>
-                <maven-compiler-plugin.compilerArgs></maven-compiler-plugin.compilerArgs>
+                <maven-compiler-plugin.compilerArgs/>
                 <!-- TODO: find a better solution https://github.com/bsideup/jabel/issues/29 -->
                 <maven-compiler-plugin.excludes>**/module-info.java</maven-compiler-plugin.excludes>
             </properties>
@@ -286,7 +286,7 @@
                         </copyrightOwners>
                         <inceptionYear>2020</inceptionYear>
                         <canUpdateLicense>false</canUpdateLicense>
-                        <sectionDelimiter></sectionDelimiter>
+                        <sectionDelimiter/>
                         <useJavaNoReformatCommentStartTag>false
                         </useJavaNoReformatCommentStartTag>
                         <excludedGroups>^(org\.eclipse\.)</excludedGroups>
